@@ -12,6 +12,7 @@
 #include "raylib.h"
 #include "Sprite.h"
 #include "Button.h"
+#include "Player.h"
 
 int main()
 {
@@ -22,16 +23,21 @@ int main()
 	
 	InitWindow(screenWidth, screenHeight, "Inheritance project");
 
-	string walkPics[]{
-		"PNG\\Player\\Poses\\player_walk1.png",
-		"PNG\\Player\\Poses\\player_walk2.png"
-	};
+	Vector2 wizButtonPos = { 10, 10 };
+	string wizButtonPic[]{ "PNG\\blue_button04.png" };
+	Button wizButton = { wizButtonPic, wizButtonPos, 1, SKYBLUE };
 
-	Sprite walk = {walkPics, 2, 8};
+	Vector2 barButtonPos = { screenWidth - 200, 10 };
+	string barButtonPic[]{ "PNG\\red_button01.png" };
+	Button barButton = { barButtonPic, barButtonPos, 1, ORANGE };
 
-	Vector2 pos = { 400, 50 };
-	string buttonPic[]{ "PNG\\blue_button07.png" };
-	Button button = { buttonPic, pos, 1 };
+	string wiz = "Wizard";
+	string bar = "Barbarian";
+	Vector2 wizText = { wizButtonPos.x, wizButtonPos.y };
+	Vector2 barText = { barButtonPos.x, barButtonPos.y };
+
+	Player wizard = { "PNG\\blue_button10.png" };
+	Player barbarian = { "PNG\\red_button09.png" };
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
@@ -43,6 +49,40 @@ int main()
 		//----------------------------------------------------------------------------------
 		// TODO: Update your variables here
 		//----------------------------------------------------------------------------------
+
+		if (CheckCollisionPointRec(GetMousePosition(), barButton.rec))
+		{
+			barButton.c = WHITE;
+			if(barButton.CheckForClick())
+				barbarian.select = true;
+		}
+		else {
+			barbarian.select = false;
+		}
+
+		if (CheckCollisionPointRec(GetMousePosition(), wizButton.rec))
+		{
+			wizButton.c = WHITE;
+			if(wizButton.CheckForClick())
+				wizard.select = true;
+		}
+		else {
+			wizard.select = false;
+		}
+
+		while (wizard.select == true) {
+
+			if (wizButton.CheckForClick()) {
+				wizard.position.x = GetMousePosition().x; wizard.position.y = GetMousePosition().y;
+			}
+		}
+
+		while (barbarian.select == true) {
+
+			if (barButton.CheckForClick()) {
+				barbarian.position.x = GetMousePosition().x; barbarian.position.y = GetMousePosition().y;
+			}
+		}
 
 		// Draw
 		//----------------------------------------------------------------------------------
@@ -59,9 +99,14 @@ int main()
 		if (IsKeyDown(KEY_S))
 			player.y -= 5;*/
 
-		walk.Draw();
+		wizButton.Draw();
+		barButton.Draw();
 
-		button.Draw();
+		wizard.draw();
+		barbarian.draw();
+
+		DrawText(wiz.c_str(), wizText.x + 40, wizText.y + 12, 25, DARKBLUE);
+		DrawText(bar.c_str(), barText.x + 40, barText.y + 12, 25, MAROON);
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------

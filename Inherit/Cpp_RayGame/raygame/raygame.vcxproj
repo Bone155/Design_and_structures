@@ -133,47 +133,19 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\PNG\blue_button07.png" />
-    <Image Include="..\PNG\Player\Limbs\arm.png" />
-    <Image Include="..\PNG\Player\Limbs\body_back.png" />
-    <Image Include="..\PNG\Player\Limbs\body_front.png" />
-    <Image Include="..\PNG\Player\Limbs\hand.png" />
-    <Image Include="..\PNG\Player\Limbs\head.png" />
-    <Image Include="..\PNG\Player\Limbs\head_back.png" />
-    <Image Include="..\PNG\Player\Limbs\head_focus.png" />
-    <Image Include="..\PNG\Player\Limbs\head_hurt.png" />
-    <Image Include="..\PNG\Player\Limbs\leg.png" />
-    <Image Include="..\PNG\Player\Poses\player_action1.png" />
-    <Image Include="..\PNG\Player\Poses\player_action2.png" />
-    <Image Include="..\PNG\Player\Poses\player_back.png" />
-    <Image Include="..\PNG\Player\Poses\player_cheer1.png" />
-    <Image Include="..\PNG\Player\Poses\player_cheer2.png" />
-    <Image Include="..\PNG\Player\Poses\player_climb1.png" />
-    <Image Include="..\PNG\Player\Poses\player_climb2.png" />
-    <Image Include="..\PNG\Player\Poses\player_duck.png" />
-    <Image Include="..\PNG\Player\Poses\player_fall.png" />
-    <Image Include="..\PNG\Player\Poses\player_hang.png" />
-    <Image Include="..\PNG\Player\Poses\player_hold1.png" />
-    <Image Include="..\PNG\Player\Poses\player_hold2.png" />
-    <Image Include="..\PNG\Player\Poses\player_hurt.png" />
-    <Image Include="..\PNG\Player\Poses\player_idle.png" />
-    <Image Include="..\PNG\Player\Poses\player_jump.png" />
-    <Image Include="..\PNG\Player\Poses\player_kick.png" />
-    <Image Include="..\PNG\Player\Poses\player_skid.png" />
-    <Image Include="..\PNG\Player\Poses\player_slide.png" />
-    <Image Include="..\PNG\Player\Poses\player_stand.png" />
-    <Image Include="..\PNG\Player\Poses\player_swim1.png" />
-    <Image Include="..\PNG\Player\Poses\player_swim2.png" />
-    <Image Include="..\PNG\Player\Poses\player_talk.png" />
-    <Image Include="..\PNG\Player\Poses\player_walk1.png" />
-    <Image Include="..\PNG\Player\Poses\player_walk2.png" />
+    <Image Include="PNG\blue_button04.png" />
+    <Image Include="PNG\blue_button10.png" />
+    <Image Include="PNG\red_button01.png" />
+    <Image Include="PNG\red_button09.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
