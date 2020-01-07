@@ -76,7 +76,7 @@ void textFile() {
 
 void Load() {
 	fstream dataFile;
-	dataFile.open("Library.dat", ios::out);
+	dataFile.open("library.dat", ios::out | ios::binary);
 	if (!dataFile.is_open) {
 		while (!dataFile.eof() && dataFile.peek() != EOF)
 		{
@@ -97,13 +97,16 @@ void Load() {
 			string text;
 			while (std::getline(txtFile, text)) {
 				
+
 			}
 		}
 	}
 }
 
 void binaryFile() {
-	
+	
+
+
 }
 
 int main() {
