@@ -58,7 +58,7 @@ public:
 		arr.data() = new tVector[arrSize];
 	}
 	tVector& operator=(const tVector &vec) {
-		arr.data() = vec.arr;
+		arr = new tVector<T>;
 		arrSize = vec.arrSize;
 		arrCapacity = vec.arrCapacity;
 		return arr;
