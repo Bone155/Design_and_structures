@@ -72,120 +72,120 @@ void textFile() {
 	
 }
 
-void load() {
-	fstream dataFile;
-	dataFile.open("library.dat", ios::in | ios::binary);
-	if (dataFile.is_open) {
-		while (!dataFile.eof() && dataFile.peek() != EOF)
-		{
-			BookInfo books;
-			dataFile.read((char*)&books, sizeof(BookInfo));
-		}
-		dataFile.close();
-	}
-	else {
-		fstream txtFile;
-		txtFile.open("library.txt", ios::in);
-		if (!txtFile.is_open()) {
-			cout << "Error" << endl;
-		}
-		else {
-			BookInfo books[3];
-			string text;
-			for (int i = 0; i < 3; i++) {
-				std::getline(txtFile, text);
-				strcpy_s(books[i].callNumber, text.c_str());
-				std::getline(txtFile, text);
-				strcpy_s(books[i].title, text.c_str());
-				std::getline(txtFile, text);
-				strcpy_s(books[i].author, text.c_str());
-				std::getline(txtFile, text);
-				strcpy_s(books[i].bookStatus, text.c_str());
-			}
-			txtFile.close();
-			dataFile.open("library.dat", ios::out | ios::binary);
-			dataFile.write((char*)&books, sizeof(BookInfo));
-			dataFile.close();
-			
-		}
-	}
-}
-
-BookInfo save(BookInfo book) {
-	fstream file;
-	file.open("library.dat", ios::out | ios::binary);
-	if (file.is_open) {
-		for (int i = 0; i < 3; i++) {
-			file.write((char*)&book, sizeof(BookInfo));
-			
-		}
-		file.close();
-	}
-	return book;
-
-}
-
-BookInfo find(BookInfo books[], string title) {
-	BookInfo book;
-	fstream file;
-	file.open("library.dat", ios::in | ios::binary);
-	if (file.is_open) {
-		for (int i = 0; i < 3; i++) {
-			file.read((char*)&books[i], sizeof(BookInfo));
-			if (books[i].title == title) {
-				book = books[i];
-			}
-		}
-		file.close();
-	}
-	return book;
-
-}
-
-void display(BookInfo book) {
-	fstream dataFile;
-	dataFile.open("library.dat", ios::in | ios::binary);
-	if (dataFile.is_open) {
-		dataFile.read((char*)&book, sizeof(BookInfo));
-		cout << book.callNumber << endl << book.title << endl << book.author << book.bookStatus << endl << endl;
-	}
-	dataFile.close();
-}
-
-BookInfo update(BookInfo book) {
-	fstream txtfile;
-	txtfile.open("library.txt", ios::in | ios::out);
-	if (!txtfile.is_open())
-	{
-		std::cerr << "File not found." << endl;
-	}
-	txtfile.clear();
-	cout << endl;
-	
-	txtfile << book.bookStatus << endl;
-	cout << endl;
-	txtfile.flush();
-	txtfile.close();
-
-	fstream datafile;
-	datafile.open("library.dat", ios::out | ios::binary);
-	if (datafile.is_open) {
-		datafile.write((char*)&book.bookStatus, sizeof(BookInfo));
-	}
-	datafile.close();
-}
-
-void binaryFile() {
-	load();
-
-
-}
+//void load() {
+//	fstream dataFile;
+//	dataFile.open("library.dat", ios::in | ios::binary);
+//	if (dataFile.is_open) {
+//		while (!dataFile.eof() && dataFile.peek() != EOF)
+//		{
+//			BookInfo books;
+//			dataFile.read((char*)&books, sizeof(BookInfo));
+//		}
+//		dataFile.close();
+//	}
+//	else {
+//		fstream txtFile;
+//		txtFile.open("library.txt", ios::in);
+//		if (!txtFile.is_open()) {
+//			cout << "Error" << endl;
+//		}
+//		else {
+//			BookInfo books[3];
+//			string text;
+//			for (int i = 0; i < 3; i++) {
+//				std::getline(txtFile, text);
+//				strcpy_s(books[i].callNumber, text.c_str());
+//				std::getline(txtFile, text);
+//				strcpy_s(books[i].title, text.c_str());
+//				std::getline(txtFile, text);
+//				strcpy_s(books[i].author, text.c_str());
+//				std::getline(txtFile, text);
+//				strcpy_s(books[i].bookStatus, text.c_str());
+//			}
+//			txtFile.close();
+//			dataFile.open("library.dat", ios::out | ios::binary);
+//			dataFile.write((char*)&books, sizeof(BookInfo));
+//			dataFile.close();
+//			
+//		}
+//	}
+//}
+//
+//BookInfo save(BookInfo book) {
+//	fstream file;
+//	file.open("library.dat", ios::out | ios::binary);
+//	if (file.is_open) {
+//		for (int i = 0; i < 3; i++) {
+//			file.write((char*)&book, sizeof(BookInfo));
+//			
+//		}
+//		file.close();
+//	}
+//	return book;
+//
+//}
+//
+//BookInfo find(BookInfo books[], string title) {
+//	BookInfo book;
+//	fstream file;
+//	file.open("library.dat", ios::in | ios::binary);
+//	if (file.is_open) {
+//		for (int i = 0; i < 3; i++) {
+//			file.read((char*)&books[i], sizeof(BookInfo));
+//			if (books[i].title == title) {
+//				book = books[i];
+//			}
+//		}
+//		file.close();
+//	}
+//	return book;
+//
+//}
+//
+//void display(BookInfo book) {
+//	fstream dataFile;
+//	dataFile.open("library.dat", ios::in | ios::binary);
+//	if (dataFile.is_open) {
+//		dataFile.read((char*)&book, sizeof(BookInfo));
+//		cout << book.callNumber << endl << book.title << endl << book.author << book.bookStatus << endl << endl;
+//	}
+//	dataFile.close();
+//}
+//
+//BookInfo update(BookInfo book) {
+//	fstream txtfile;
+//	txtfile.open("library.txt", ios::in | ios::out);
+//	if (!txtfile.is_open())
+//	{
+//		std::cerr << "File not found." << endl;
+//	}
+//	txtfile.clear();
+//	cout << endl;
+//	
+//	txtfile << book.bookStatus << endl;
+//	cout << endl;
+//	txtfile.flush();
+//	txtfile.close();
+//
+//	fstream datafile;
+//	datafile.open("library.dat", ios::out | ios::binary);
+//	if (datafile.is_open) {
+//		datafile.write((char*)&book.bookStatus, sizeof(BookInfo));
+//	}
+//	datafile.close();
+//}
+//
+//void binaryFile() {
+//	load();
+//
+//
+//}
 
 int main() {
 
-	//textFile();
+	textFile();
 
-	binaryFile();
+	//binaryFile();
 
 	system("pause");
 	return 0;

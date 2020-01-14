@@ -54,4 +54,24 @@ public:
 
 		delete n;
 	}
+
+	tForwardList(const tForwardList& other) {
+
+	}
+
+	tForwardList& operator=(const tForwardList &rhs) {
+
+	}
+
+	bool empty() const {
+
+	}
+
+	void clear() {
+
+	}
+
+	void resize(size_t newSize) {
+
+	}
 };
