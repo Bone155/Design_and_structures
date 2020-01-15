@@ -3,7 +3,10 @@
 vector<HighScoreEntry> HighScoreTable::topNNScores(int topRows)
 {
 	vector<HighScoreEntry> temp;
-	for (int i = 1; i < topRows; i++) {
+	for (int i = 0; i < topRows; i++) {
+		if (i > hsVector.size() - 1) {
+			break;
+		}
 		temp.push_back(hsVector[i]);
 	}
 	return temp;
@@ -15,20 +18,23 @@ bool HighScoreTable::pruneBottomNNScores(int bottomRows)
 		return false;
 	}
 	else {
-		hsVector.resize(hsVector.size() - bottomRows);
+		for (int i = 0; i < bottomRows; i++) {
+			hsVector.pop_back();
+		}
 		return true;
 	}
 }
 
 vector<HighScoreEntry> HighScoreTable::bubbleSort(vector<HighScoreEntry> array)
 {
+	vector<HighScoreEntry> temp;
+	temp.resize(1);
 	for (int i = 0; i < array.size() - 1; i++) {
-		for (int j = array.size() - 1; j > i + 1; j--) {
-			if (array[j].score < array[j - i].score) {
-				vector<HighScoreEntry> temp;
+		for (int j = array.size() - 1; j > i; j--) {
+			if (array[j].score < array[j - 1].score) {
 				temp[0] = array[j];
-				array[j] = array[j - i];
-				array[j] = temp[0];
+				array[j] = array[j - 1];
+				array[j - 1] = temp[0];
 			}
 		}
 	}
@@ -37,8 +43,9 @@ vector<HighScoreEntry> HighScoreTable::bubbleSort(vector<HighScoreEntry> array)
 
 vector<HighScoreEntry> HighScoreTable::insertSort(vector<HighScoreEntry> array)
 {
-	for (int i = 0; i < array.size(); i++) {
-		vector<HighScoreEntry> key;
+	vector<HighScoreEntry> key;
+	key.resize(1);
+	for (int i = 1; i < array.size(); i++) {
 		key[0] = array[i];
 		int j = i - 1;
 		while (j >= 0 && array[j].score > key[0].score) {
@@ -48,7 +55,49 @@ vector<HighScoreEntry> HighScoreTable::insertSort(vector<HighScoreEntry> array)
 		}
 
 	}
-	return vector<HighScoreEntry>();
+	return array;
+}
+
+vector<HighScoreEntry> HighScoreTable::merge(vector<HighScoreEntry> array, size_t p, size_t q, size_t r)
+{
+	size_t leftEnd = q - p + 1;
+	size_t rightEnd = r - q;
+
+	vector<HighScoreEntry> left;	left.resize(leftEnd);
+	vector<HighScoreEntry> right;	right.resize(rightEnd);
+
+	for (int i = 0; i < leftEnd; i++) {
+		left[i] = array[p + i];
+	}
+	for (int j = 0; j < rightEnd; j++) {
+		right[j] = array[q + j + 1];
+	}
+
+	int i = 0;
+	int j = 0;
+
+	for (int k = p; k < r; k++) {
+		if ((j >= rightEnd) || (i < leftEnd && left[i].score <= right[j].score)) {
+			array[k] = left[i];
+			i++;
+		}
+		else {
+			array[k] = right[j];
+			j++;
+		}
+	}
+	return array;
+}
+
+vector<HighScoreEntry> HighScoreTable::mergeSort(vector<HighScoreEntry> array, size_t p, size_t r)
+{
+	if (p < r) {
+		size_t q = (p + r) / 2;
+		mergeSort(array, p, q);
+		mergeSort(array, q + 1, r);
+		merge(array, p, q, r);
+	}
+	return array;
 }
 
 HighScoreTable::HighScoreTable()
@@ -57,6 +106,10 @@ HighScoreTable::HighScoreTable()
 
 HighScoreTable::HighScoreTable(string filename)
 {
+	vector<HighScoreEntry> temp;
+	string tempScore;
+	string tempLevel;
+	temp.resize(1);
 	std::fstream file;
 	file.open(filename, std::ios::in);
 	if (!file.is_open())
@@ -64,31 +117,31 @@ HighScoreTable::HighScoreTable(string filename)
 		std::cerr << "File not found." << endl;
 	}
 	string text;
-	int j = 0;
 	while (std::getline(file, text)) {
-		cout << text << endl;
 		for (int i = 0; i < text.length(); i++) {
 			if (text[i] == ',') {
-				hsVector[j].name = text.substr(0, text[i - 1]);
+				temp[0].name = text.substr(0, i);
+				break;
 			}
 		}
-		for (int i = strlen(hsVector[j].name.c_str()) + 1; i < text.length(); i++) {
+		for (int i = temp[0].name.length() + 1; i < text.length(); i++) {
 			if (text[i] == ',') {
-				text = text.substr(strlen(hsVector[j].name.c_str()) + 1, text.length() - i);
-				hsVector[j].score = std::stoi(text);
+				tempScore = text.substr(strlen(temp[0].name.c_str()) + 1, text.length() - i);
+				temp[0].score = std::stoi(tempScore);
+				break;
 			}
 		}
 		for (int i = text.length(); i > 0; i--) {
 			if (text[i] == ',') {
-				text = text.substr(text.length(), text[i - 1]);
-				hsVector[j].level = std::stoi(text);
+				tempLevel = text.substr(i + 1, text.length() - i);
+				temp[0].level = std::stoi(tempLevel);
+				break;
 			}
 		}
-		
-		j++;
+		hsVector.push_back(temp[0]);
 	}
-	cout << endl;
 	file.close();
+	cout << endl;
 }
 
 HighScoreTable::~HighScoreTable()

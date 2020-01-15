@@ -1,4 +1,3 @@
-name,score,level
 Bobbo,23,1
 Jimbo,51,3
 Dino,5,9
