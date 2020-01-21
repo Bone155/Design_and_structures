@@ -4,9 +4,9 @@ template<class T>
 class Resource : public ResourceBase
 {
 public:
-	template<typename Args>
-	Resource(const string& filename, Args args) : ResourceBase(filename) {
-		m_data = std::unique_ptr<T>(new T(filename.c_str(), arga))
+	template<typename ...Args>
+	Resource(const string& filename, ...Args args) : ResourceBase(filename) {
+		m_data = std::unique_ptr<T>(new T(filename.c_str(), args...))
 	}
 	~Resource() {};
 

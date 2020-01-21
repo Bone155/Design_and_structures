@@ -15,7 +15,7 @@ void insert(HighScoreTable hst, vector<HighScoreEntry> topScores) {
 }
 
 void merge(HighScoreTable hst, vector<HighScoreEntry> topScores) {
-	topScores = hst.mergeSort(topScores, 0, topScores.size()-1);
+	hst.mergeSort(topScores, 0, topScores.size()-1);
 	for (int i = 0; i < topScores.size(); i++) {
 		cout << topScores[i].name << "," << topScores[i].score << "," << topScores[i].level << endl;
 	}
@@ -37,9 +37,9 @@ int main() {
 		cout << topScores2[i].name << "," << topScores2[i].score << "," << topScores2[i].level << endl;
 	}
 	cout << endl;
-	//bubble(hst, topScores);
-	//insert(hst, topScores);
-	merge(hst, topScores);
+	//bubble(hst, topScores2);
+	//insert(hst, topScores2);
+	merge(hst, topScores2);
 
 	system("pause");
 	return 0;

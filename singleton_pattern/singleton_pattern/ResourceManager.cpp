@@ -1,4 +1,5 @@
 #include "ResourceManager.h"
+#include <cstdarg>
 
 ResourceManager & ResourceManager::getInstance()
 {
@@ -20,28 +21,26 @@ std::shared_ptr<ResourceBase> ResourceManager::get(const std::string filename, R
 	switch (type) {
 	case ResourceType::TEXTURE:
 	{
-		std::shared_ptr<ResourceBase> resource(
-			new Resource<aie::Texture>(filename));
+		std::shared_ptr<ResourceBase> resource(new Resource<aie::Texture>(filename));
 		m_resources.push_back(resource);
 		return resource;
 	}
 	case ResourceType::FONT:
 	{
-		std::shared_ptr<ResourceBase> resource(
-			new Resource<aie::Font>(filename, 32));
+		std::shared_ptr<ResourceBase> resource(new Resource<aie::Font>(filename, 32));
 		m_resources.push_back(resource);
 		return resource;
 	}
 	case ResourceType::AUDIO:
 	{
-		std::shared_ptr<ResourceBase> resource(
-			new Resource<aie::Audio>(filename));
+		std::shared_ptr<ResourceBase> resource(new Resource<aie::Audio>(filename));
 		m_resources.push_back(resource);
 		return resource;
 	}
 	default:
 		return nullptr;
-	}
+	}
+
 }
 
 void ResourceManager::collectGarbage()

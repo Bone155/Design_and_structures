@@ -58,7 +58,7 @@ vector<HighScoreEntry> HighScoreTable::insertSort(vector<HighScoreEntry> array)
 	return array;
 }
 
-vector<HighScoreEntry> HighScoreTable::merge(vector<HighScoreEntry> array, size_t p, size_t q, size_t r)
+void HighScoreTable::merge(vector<HighScoreEntry> &array, size_t p, size_t q, size_t r)
 {
 	size_t leftEnd = q - p + 1;
 	size_t rightEnd = r - q;
@@ -73,8 +73,8 @@ vector<HighScoreEntry> HighScoreTable::merge(vector<HighScoreEntry> array, size_
 		right[j] = array[q + j + 1];
 	}
 
-	int i = 0;
-	int j = 0;
+	size_t i = 0;
+	size_t j = 0;
 
 	for (int k = p; k < r; k++) {
 		if ((j >= rightEnd) || (i < leftEnd && left[i].score <= right[j].score)) {
@@ -86,18 +86,17 @@ vector<HighScoreEntry> HighScoreTable::merge(vector<HighScoreEntry> array, size_
 			j++;
 		}
 	}
-	return array;
+
 }
 
-vector<HighScoreEntry> HighScoreTable::mergeSort(vector<HighScoreEntry> array, size_t p, size_t r)
+void HighScoreTable::mergeSort(vector<HighScoreEntry> &array, size_t startIdx, size_t endIdx)
 {
-	if (p < r) {
-		size_t q = (p + r) / 2;
-		mergeSort(array, p, q);
-		mergeSort(array, q + 1, r);
-		merge(array, p, q, r);
+	if (startIdx < endIdx) {
+		size_t midIdx = (startIdx + endIdx) / 2;
+		mergeSort(array, startIdx, midIdx);
+		mergeSort(array, midIdx + 1, endIdx);
+		merge(array, startIdx, midIdx, endIdx);
 	}
-	return array;
 }
 
 HighScoreTable::HighScoreTable()

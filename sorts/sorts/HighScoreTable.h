@@ -17,8 +17,8 @@ public:
 	bool pruneBottomNNScores(int bottomRows);
 	vector<HighScoreEntry> bubbleSort(vector<HighScoreEntry> array);
 	vector<HighScoreEntry> insertSort(vector<HighScoreEntry> array);
-	vector<HighScoreEntry> merge(vector<HighScoreEntry> array, size_t p, size_t q, size_t r);
-	vector<HighScoreEntry> mergeSort(vector<HighScoreEntry> array, size_t p, size_t r);
+	void merge(vector<HighScoreEntry> & array, size_t p, size_t q, size_t r);
+	void mergeSort(vector<HighScoreEntry> &array, size_t p, size_t r);
 
 	HighScoreTable();
 	HighScoreTable(string filename);
