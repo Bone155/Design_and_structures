@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "ResourceBase.h"
+#include "Resource.h"
 
 class ResourceManager
 {
@@ -20,8 +20,7 @@ public:
 public:
 	static ResourceManager& getInstance();
 	~ResourceManager() {};
-	std::shared_ptr<ResourceBase> get(const std::string filename,
-		ResourceType type);
+	std::shared_ptr<ResourceBase> get(const string filename, ResourceType type);
 	void collectGarbage();
 	int getCount();
 };

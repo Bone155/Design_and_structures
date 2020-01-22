@@ -76,7 +76,7 @@ void HighScoreTable::merge(vector<HighScoreEntry> &array, size_t p, size_t q, si
 	size_t i = 0;
 	size_t j = 0;
 
-	for (int k = p; k < r; k++) {
+	for (int k = p; k <= r; k++) {
 		if ((j >= rightEnd) || (i < leftEnd && left[i].score <= right[j].score)) {
 			array[k] = left[i];
 			i++;

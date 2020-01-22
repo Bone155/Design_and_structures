@@ -1,5 +1,4 @@
 #include "ResourceManager.h"
-#include <cstdarg>
 
 ResourceManager & ResourceManager::getInstance()
 {
@@ -7,7 +6,7 @@ ResourceManager & ResourceManager::getInstance()
 	return instance;
 }
 
-std::shared_ptr<ResourceBase> ResourceManager::get(const std::string filename, ResourceType type)
+std::shared_ptr<ResourceBase> ResourceManager::get(const string filename, ResourceType type)
 {
 	unsigned int index = 0;
 	std::vector< std::shared_ptr<ResourceBase> >::iterator it;

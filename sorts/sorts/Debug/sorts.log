@@ -1,7 +1,11 @@
-﻿  main.cpp
-c:\users\s199010\source\repos\design_and_structures\sorts\sorts\main.cpp(5): warning C4018: '<': signed/unsigned mismatch
-c:\users\s199010\source\repos\design_and_structures\sorts\sorts\main.cpp(12): warning C4018: '<': signed/unsigned mismatch
-c:\users\s199010\source\repos\design_and_structures\sorts\sorts\main.cpp(19): warning C4018: '<': signed/unsigned mismatch
-c:\users\s199010\source\repos\design_and_structures\sorts\sorts\main.cpp(29): warning C4018: '<': signed/unsigned mismatch
-c:\users\s199010\source\repos\design_and_structures\sorts\sorts\main.cpp(36): warning C4018: '<': signed/unsigned mismatch
+﻿  HighScoreTable.cpp
+c:\users\s199010\source\repos\design_and_structures\sorts\sorts\highscoretable.cpp(7): warning C4018: '>': signed/unsigned mismatch
+c:\users\s199010\source\repos\design_and_structures\sorts\sorts\highscoretable.cpp(17): warning C4018: '>=': signed/unsigned mismatch
+c:\users\s199010\source\repos\design_and_structures\sorts\sorts\highscoretable.cpp(32): warning C4018: '<': signed/unsigned mismatch
+c:\users\s199010\source\repos\design_and_structures\sorts\sorts\highscoretable.cpp(48): warning C4018: '<': signed/unsigned mismatch
+c:\users\s199010\source\repos\design_and_structures\sorts\sorts\highscoretable.cpp(69): warning C4018: '<': signed/unsigned mismatch
+c:\users\s199010\source\repos\design_and_structures\sorts\sorts\highscoretable.cpp(72): warning C4018: '<': signed/unsigned mismatch
+c:\users\s199010\source\repos\design_and_structures\sorts\sorts\highscoretable.cpp(79): warning C4018: '<=': signed/unsigned mismatch
+c:\users\s199010\source\repos\design_and_structures\sorts\sorts\highscoretable.cpp(120): warning C4018: '<': signed/unsigned mismatch
+c:\users\s199010\source\repos\design_and_structures\sorts\sorts\highscoretable.cpp(126): warning C4018: '<': signed/unsigned mismatch
   sorts.vcxproj -> C:\Users\s199010\source\repos\Design_and_structures\sorts\Debug\sorts.exe
