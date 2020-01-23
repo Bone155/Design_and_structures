@@ -47,5 +47,7 @@ public:
 	}
 
 	size_t capacity() { return poolCapacity; }
+
+	void resize(size_t newCapacity) { poolCapacity = newCapacity; }
 };
 
